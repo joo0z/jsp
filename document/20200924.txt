@@ -1,0 +1,12 @@
+사용자 요청 =>
+ Servlet-mapping
+어떤 처리를 할지 Tommcat이 실행해준다.
+(java에서 main역할)
+
+요청방법
+1. 웹브라우저 주소줄에 주소입력 + Enter
+2. 버튼 : form - get
+              form - post
+3. link - GET
+
+HTTP method : get, post
