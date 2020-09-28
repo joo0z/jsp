@@ -10,7 +10,7 @@
 </head>
 <body>
 	<% request.setCharacterEncoding("utf-8"); %>
-	<h1>GET</h1>
+	<h1><%=request.getMethod()%></h1>
 	userId 파라미터는 brown, sally 두개를 보내지만 getParameter를 호출하면 <br>
 	첫번째 파라미터 값을 반환<br>
 	request.getParameter("userId") : <%=request.getParameter("userId") %><br>
@@ -32,8 +32,16 @@
 	요청이 존재하는 파라미터 이름 출력하기
 	userId, pass
 	<%
+		Enumeration<String> pNames = request.getParameterNames();
+		while(pNames.hasMoreElements()){
+			String pName = pNames.nextElement();
+	%>
+			<%=pName%> : <%request.getHeader(pName); %>
+	<%
+		}
 	%>
 	
+		
 	
 </body>
 </html>
