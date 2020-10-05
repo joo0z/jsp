@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	이후ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ
+	이 파일은 
 </body>
 </html>

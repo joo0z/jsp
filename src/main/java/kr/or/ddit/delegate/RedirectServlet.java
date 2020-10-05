@@ -10,14 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 @WebServlet("/redirectServlet")
 public class RedirectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	// 인자로 입력한 클래스의 패카지 정보를 확인 : kr.or.ddit.delegate.RedirectServlet
+//	private static Logger logger = LoggerFactory.getLogger(RedirectServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedirectServlet.class);   
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// servlet은 응답을 만들어 내는 역할이 아니라 요청을 받고 로직을 처리한 후
 		// jsp에게 화면을 응답 생성을 위임한다.
-		System.out.println("redirectServlet.doGet()");
+//		System.out.println("redirectServlet.doGet()"); 
+		//print 대신 logger 사용
+		
+		// 문자열 결합만 조심하자 "redirectServlet"+"doGet()" => XX
+//		logger.debug("redirectServlet.doGet()");
+		// 가변 인자로 인자를 추가할 수 있다.
+		logger.debug("redirectServlet {} {} {}","doGet()", "test", "test2");
 		
 		// 응답을 다른 jsp에게 위임하는 첫번째 방법 : redirect
 		// respose 객체의 sendRedirect 메소드를 통해 클라이언트에게 재 요청을 보낼 주소를 알려준다.
