@@ -9,12 +9,9 @@
 <script>
 	$(function () {
 		
-		$(".meth").click('change', function(){
-		    if($("input:radio[name=meth]:checked").val()=='get'){
-			    $('#fo').attr('method', 'get')
-		    }else{
-			    $('#fo').attr('method', 'post')
-		    }
+		$(".ck").click('change', function(){
+			met = $('input[type=radio]:checked').val()
+			$('#fo').attr('method', met)
 		})
 
 	})	
@@ -47,15 +44,15 @@
 	 <%-- action : 요청을 보낼 경로
 	 	  mathod : 요청 방식 (form에서는 GET, POST 두가지만 가능하며 DEFAULT를 GET)
 	  --%>
-	 <form action="/<%=request.getContextPath() %>request/getRequestResponse.jsp" method="post">
-	 	user id :<input type="text" name="userId" value="브라운"><br>
+	 <form action="/request/getRequestResponse.jsp" method="get" id="fo">
+	 	user id :<input type="text" name="userId" value="brown"><br>
 	 	user id :<input type="text" name="userId" value="sally"><br>
 	 	user password :<input type="password" name="pass" value="1234"><br>
 	 	
 	 GET POST두가지를 선택할 수 있는 라디오 버튼을 만들어 <br>
 	 FORM전송시 사용자가  GET, POST 방식을 지정할 수 있도록<br>
-	 GET <input type="radio" value="GET" id="get" class="meth" name="meth" checked="checked"> <br>
-	 POST <input type="radio" value="POST" id="post" class="meth" name="meth"> <br><br>
+	 GET <input type="radio" value="GET" id="get" class="ck" name="meth" checked="checked"> <br>
+	 POST <input type="radio" value="POST" id="post" class="ck" name="meth"> <br><br>
 	 
 	 	<input type="submit" value="전송" id="sub">
 	 </form>
