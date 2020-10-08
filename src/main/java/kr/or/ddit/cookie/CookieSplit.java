@@ -11,7 +11,7 @@ public class CookieSplit {
 	// cookieStrim 문자열 변수에 담긴 값은 쿠키이름1 = 쿠키값1; 쿠키이름2 = 쿠키값2;...
 	// 형태로 구성된다. 
 	// 구성된 쿠키 이름과 값은 상황에 따라 변경될 수 있음
-	String cookieString = "USERNM=joo0z; REMEMBERME=Y; TEST=T; ";
+	public String cookieString = "USERNM=joo0z; REMEMBERME=Y; TEST=T; ";
 	
 	public static void main(String[] args) {
 		CookieSplit cookieSplit = new CookieSplit();
@@ -32,7 +32,6 @@ public class CookieSplit {
 				if(cookie[0].equals(cookieName)) {
 					result = cookie[1];
 				}
-//				String remember = cookies[i+2].split("=")[3];
 			}
 		return result;
 	}

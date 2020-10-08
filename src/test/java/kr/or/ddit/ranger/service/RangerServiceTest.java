@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import kr.or.ddit.cookie.CookieSplit;
+
 public class RangerServiceTest {
 
 	// 해당 메소드가 test 대상임을 알려주는 어노테이션
@@ -40,7 +42,7 @@ public class RangerServiceTest {
 		
 		/*** Then : 결과 ***/
 		assertNotNull(rangers);
-		
 	}
+	
 
 }
