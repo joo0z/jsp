@@ -18,7 +18,16 @@ import kr.or.ddit.member.service.MemberServiceI;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static final Logger logger = LoggerFactory.getLogger(LoginServlet.class);
+    
+	private static final Logger logger = LoggerFactory.getLogger(LoginServlet.class);
+    private MemberServiceI memberService;
+	
+	@Override
+	public void init() throws ServletException {
+		// service객체 초기화(생성)
+		memberService = new MemberService();
+	}
+    
 	// login화면을 클라이언트에게 응답으로 생성
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
@@ -43,7 +52,6 @@ public class LoginServlet extends HttpServlet {
 		 
 		 */
 		
-		MemberServiceI memberService = new MemberService();
 		MemberVo memberVo = memberService.getMember(userId);
 		
 		// 등록된 회원이 없는 경우
