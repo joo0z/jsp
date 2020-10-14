@@ -1,4 +1,3 @@
-<%@page import="kr.or.ddit.member.model.JobVo"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.member.service.MemberService"%>
 <%@page import="kr.or.ddit.member.service.MemberServiceI"%>
@@ -34,27 +33,31 @@
 
 <div class="row">
 	<div class="col-sm-8 blog-main"> <br>
-		<h2 class="sub-header">jobList</h2>
+		<h2 class="sub-header">사용자</h2>
 		<div class="table-responsive">
-	<%	List<JobVo> list = (List<JobVo>) request.getAttribute("jobList");	%>
-	<table class="table table-striped">
-		<tr>
-			<th>Job_ID</th>
-			<th>Job_TITLE</th>
-		</tr>
-	<%
-		for(int i=0; i<list.size(); i++){
-				%>
-		<tr>
-			<td>
-				<%=list.get(i).getJob_id()%>
-			</td>
-			<td>
-				<%=list.get(i).getJob_title()%>
-		</tr>
-		<%}%>
+			<table class="table table-striped">
+				<%	
+					MemberServiceI memberService = new MemberService(); 
+					request.setAttribute("memberList", memberService.selectAllMember());
+				
+					List<MemberVo> list= memberService.selectAllMember();
 		
-	</table>
+				%>
+				<tr>
+						<th>사용자 아이디</th>
+						<th>사용자 이름</th>
+						<th>사용자 별명</th>
+						<th>등록일시</th>
+					</tr>
+						<c:forEach items="${memberList }" var="member">
+					<tr>
+							<td> ${member.userid} </td>
+							<td> ${member.usernm} </td>
+							<td> ${member.alias} </td>
+							<td> ${member.reg_dt} </td>
+					</tr>
+						</c:forEach>
+			</table>
 		</div>
 
 		<a class="btn btn-default pull-right">사용자 등록</a>
