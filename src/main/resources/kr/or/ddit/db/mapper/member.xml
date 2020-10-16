@@ -13,7 +13,7 @@
      FROM users 
   </select>
   
-  <select id="pageMember" resultType="MemberVo" parameterType="pageVo">
+  <select id="selectMemberPageList" resultType="MemberVo" parameterType="pageVo">
   	 SELECT *
 		FROM
 		    (select rownum rn, a.*

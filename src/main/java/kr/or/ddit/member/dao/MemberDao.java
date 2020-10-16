@@ -55,7 +55,7 @@ public class MemberDao implements MemberDaoI{
 
 	@Override
 	public int selectMemberTotalCnt(SqlSession sqlSession) {
-		return sqlSession.selectOne("member.selectMemberPageList");
+		return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
 	
 

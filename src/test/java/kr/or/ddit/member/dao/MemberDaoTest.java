@@ -28,10 +28,10 @@ public class MemberDaoTest {
  		MemberVo memberVo = memberDao.getMember(userId);
 		
  		/*** Then ***/
-//		assertEquals("brown", memberVo.getUserId());
-//		assertEquals("passBrown", memberVo.getPassword());
+		assertEquals("brown", memberVo.getUserid());
+		assertEquals("brownPass", memberVo.getPass());
  		
- 		assertEquals(answerMemberVo, memberVo);
+// 		assertEquals(answerMemberVo, memberVo);
 		
 	}
 	
