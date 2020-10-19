@@ -45,8 +45,8 @@ public class MemberListServlet extends HttpServlet {
 		request.setAttribute("page", page);
 		
 		// pageSize
-		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		String pageSize_str = request.getParameter("pageSize");
+		int pageSize = pageSize_str == null ? 5 : Integer.parseInt(pageSize_str);
 		request.setAttribute("pageSize", pageSize);
 		
 		PageVo pageVo = new PageVo(page, pageSize);
@@ -57,15 +57,9 @@ public class MemberListServlet extends HttpServlet {
 		request.setAttribute("memberList", map.get("memberList"));
 		request.setAttribute("pages", map.get("pages"));
 		
-//		Map<Integer, Integer> map = new HashedMap();
-//		map.put(page, pageSize);
-		
 		request.getRequestDispatcher("/member/memberList.jsp").forward(request, response);
 		
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
 }
