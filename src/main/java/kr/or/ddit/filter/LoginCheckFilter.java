@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.member.model.MemberVo;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class LoginCheckFilter implements Filter {
 	private static final Logger logger = LoggerFactory.getLogger(LoginCheckFilter.class);
 
@@ -42,6 +42,7 @@ public class LoginCheckFilter implements Filter {
 		if (uri.equals("/login") ||
 				uri.endsWith(".js") ||
 				uri.endsWith(".map") ||
+				uri.endsWith(".ico") ||
 				uri.endsWith(".css") ) {  // 필터 없을 때
 			chain.doFilter(request, response);
 		}else {
