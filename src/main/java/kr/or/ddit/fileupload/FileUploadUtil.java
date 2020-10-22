@@ -33,5 +33,18 @@ public class FileUploadUtil {
 		}
 	return "";
 	}
+	
+	// 확장자 설정 filename : sally.png ==> png
+	public static String getExtension(String filename) {
+//		String[] attrs = filename.split("\\.");
+//		String extension = attrs[1];
+//		logger.debug("Extenstion : {}", extension);
+//		return extension;
+		if (filename == null || filename.indexOf(".") == -1) {
+			return "";
+		}else {
+			return filename.split("\\.")[1];
+		}
+	}
 
 }

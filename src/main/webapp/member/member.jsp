@@ -14,6 +14,12 @@
 
 <title>Jsp</title>
 <%@include file="/layout/commonlib.jsp"%>
+<script>
+$(document).ready(function(){
+	$('form [name="userid"]').val()
+
+})
+</script>
 </head>
 <body>
 <%@include file="/layout/header.jsp" %>
@@ -25,67 +31,58 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
-				<form class="form-horizontal" role="form">
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label> -->
-<!-- 						<div class="col-sm-10"> -->
-<!-- 							<input type="text" class="form-control" id="userId" name="userId" -->
-<!-- 								placeholder="사용자 아이디"> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-
+				<form class="form-horizontal" role="form" action="${cp }/memberUpdate" method="get">
 					<div class="form-group">
 						<label for="reg_dt" class="col-sm-2 control-label">사용자사진</label>
 						<div class="col-sm-10">
 							<label class="control-label">
 <%-- 								<img src="${cp }/profile/${memberVo.filename}"> --%>
-								
 								<img src="${cp }/profileImg?userid=${memberVo.userid }">
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
+						<label for="userid" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.userid }</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.userid }" name="userid">${memberVo.userid }</label>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.usernm }</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.usernm }" name="usernm">${memberVo.usernm }</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.alias }</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.alias }" name="alias">${memberVo.alias }</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<label class="control-label">****</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.pass }" name="pass">****</label>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="addr1" class="col-sm-2 control-label">주소</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.addr1}</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.addr1 }" name="addr1">${memberVo.addr1}</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="addr2" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.addr2}</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.addr2 }" name="addr2">${memberVo.addr2}</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="zipcode" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.zipcode}</label>
+							<label class="control-label"><input type="hidden" value="${memberVo.zipcode }" name="zipcode">${memberVo.zipcode}</label>
 						</div>
 					</div>
 					<div class="form-group">

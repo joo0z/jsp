@@ -13,6 +13,25 @@ public class MemberVo {
 	private String zipcode;
 	private String filename;
 	private String realfilename;
+	
+	
+	// 기본 생성자 만들어주기
+	public MemberVo() {}
+	
+	// 회원등록할 때 입럭받을 생성자 생성
+	public MemberVo(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
+			String filename, String realfilename) {
+		this.userid = userid;
+		this.pass = pass;
+		this.usernm = usernm;
+		this.alias = alias;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+		this.filename = filename;
+		this.realfilename = realfilename;
+	}
+	
 	public String getUserid() {
 		return userid;
 	}

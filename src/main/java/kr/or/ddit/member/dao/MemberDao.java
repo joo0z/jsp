@@ -1,5 +1,6 @@
 package kr.or.ddit.member.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -57,6 +58,55 @@ public class MemberDao implements MemberDaoI{
 	public int selectMemberTotalCnt(SqlSession sqlSession) {
 		return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
-	
+
+	@Override
+	public int insertMember(MemberVo memberVo) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int cnt = 0;
+		try {
+			cnt = sqlSession.insert("member.insertMember", memberVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (cnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		
+		return cnt;
+	}
+
+	@Override
+	public int deleteMember(String userid) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int cnt = sqlSession.delete("member.deleteMember", userid);
+		
+		if (cnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return cnt;
+	}
+
+	@Override
+	public int updateMember(MemberVo memberVo) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int cnt = sqlSession.delete("member.updateMember", memberVo);
+		
+		if (cnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return cnt;
+	}
+
+
 
 }
