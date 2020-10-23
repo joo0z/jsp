@@ -104,4 +104,14 @@ public class MemberServiceTest {
 		assertEquals(1, cnt);
 	}
 	
+	@Test
+	public void updateMemberServiceTest() {
+		/*** Given ***/
+		
+		/*** When ***/
+
+		/*** Then ***/
+		
+	}
+	
 }

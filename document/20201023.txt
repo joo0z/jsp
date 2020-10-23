@@ -1,0 +1,10 @@
+1. 파일 업로드 ==> 파일 다운로드
+
+파일업로드시 filename 가져오는 방법
+Content-Disposition 헤더에서 획득
+https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Disposition
+Content-Disposition : form-data; name="realfilename"; filename="" 
+
+
+2. 쿼리 (계층형, 답변형, 답변횟수에 제한이 없는)
+3. 웹 에디터

@@ -16,9 +16,10 @@
 <%@include file="/layout/commonlib.jsp"%>
 <script>
 $(document).ready(function(){
-	$('form [name="userid"]').val()
-
-})
+	$('#profileDownBtn').on('click', function(){
+		document.location="/profileDownload?userid=${memberVo.userid}";
+	})
+});
 </script>
 </head>
 <body>
@@ -29,15 +30,14 @@ $(document).ready(function(){
 				<%@include file="/layout/left.jsp" %>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
 				<form class="form-horizontal" role="form" action="${cp }/memberUpdate" method="get">
 					<div class="form-group">
 						<label for="reg_dt" class="col-sm-2 control-label">사용자사진</label>
 						<div class="col-sm-10">
 							<label class="control-label">
 <%-- 								<img src="${cp }/profile/${memberVo.filename}"> --%>
-								<img src="${cp }/profileImg?userid=${memberVo.userid }">
+								<img src="${cp }/profileImg?userid=${memberVo.userid }"><br>
+								<button id="profileDownBtn" type="button" class="btn btn-default">다운로드:${memberVo.realfilename }</button>
 							</label>
 						</div>
 					</div>

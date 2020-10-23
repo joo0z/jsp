@@ -116,5 +116,13 @@ public class MemberDaoTest {
 		assertEquals(1, cnt);
 	}
 	
+	@Test
+	public void updateMemberDaoTest() {
+		/*** Given ***/
+		
+		/*** When ***/
 
+		/*** Then ***/
+		
+	}
 }
