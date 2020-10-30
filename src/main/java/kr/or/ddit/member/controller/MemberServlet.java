@@ -33,9 +33,7 @@ public class MemberServlet extends HttpServlet {
 		*/
 		String userid = request.getParameter("userid");
 		MemberVo memberVo = memberService.getMember(userid);
-		
 		request.setAttribute("memberVo", memberVo);
-		
 		request.getRequestDispatcher("/member/member.jsp").forward(request, response);
 	}
 

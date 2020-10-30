@@ -24,7 +24,7 @@ public class ConnectionPoolServlet extends HttpServlet{
 		BasicDataSource db = new BasicDataSource();
 		db.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 		db.setUrl("jdbc:oracle:thin:@localhost:1521/xe");
-		db.setUsername("JYP");
+		db.setUsername("spring");
 		db.setPassword("java");
 		// 저장 공간
 		db.setInitialSize(20);
@@ -32,7 +32,6 @@ public class ConnectionPoolServlet extends HttpServlet{
 		// 어플리케이션 객체
 		ServletContext sc = getServletContext();
 		sc.setAttribute("db", db);
-		
 		
 	}
 }

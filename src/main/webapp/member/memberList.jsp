@@ -56,7 +56,7 @@ $(document).ready(function(){
 						<th>등록일시</th>
 					</tr>
 				<tbody id="memberList">
-		            <c:forEach items="${memberList}" var="member">
+		            <c:forEach items="${memberList }" var="member">
 		               <tr data-userid="${member.userid}">
 			               <td>${member.userid }</td>
 			               <td>${member.usernm }</td>

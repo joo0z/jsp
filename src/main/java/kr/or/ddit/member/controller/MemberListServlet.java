@@ -30,7 +30,6 @@ public class MemberListServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		memberService = new MemberService();
 //		List<MemberVo> list = memberService.selectAllMember();
 //		request.setAttribute("memberList", list);
 //		request.getRequestDispatcher("/member/memberList.jsp").forward(request, response);

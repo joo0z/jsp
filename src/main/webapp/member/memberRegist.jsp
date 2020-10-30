@@ -58,7 +58,6 @@ function initData(){
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-
 				<form id="frm" class="form-horizontal" role="form" action="${cp }/regist" method="post" enctype="multipart/form-data">
 <br>
 <br>
