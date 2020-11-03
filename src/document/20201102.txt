@@ -51,14 +51,18 @@ init- method, destroy-method : 스프링 빈 생성, 소멸시 초기화, 리소
 factory-bean, factory-method : 생성자가 아닌 factory 객체를 통해 객체를 생성할 때
 depends-on : 스프링 빈 생성시 이전에 반드시 생성이 되어야 하는 다른 스프링빈을 명시
 
+어노테이션은 주석 /*메타데이터*/
+어노테이션 자체가 강제성을 갖지 않음.
+단, 프레임 워크에서 해당 어노테이션 해석하고, 프레임 워크에서 자체적으로 관리할 때 사용
+
+component scan의 대상 어노테이션
+@Contraller, @Service, @Repository, @Component 
 
 
-
-
-
-
-
-
+java 스프링 컨테이너 설정
+xml ==> java 파일 생성
+1. class @Configuration : spring 컨테이너에게 해당 java파일이 스프링 설정 파일임을 암시
+2. method @Bean : 해당 메서드에서 리턴하는 객체가 스프링 빈으로 등록
 
 
 
