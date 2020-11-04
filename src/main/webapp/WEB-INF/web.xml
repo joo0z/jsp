@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-<!--   스프링컨테이너 생성 : service, dao -->
+<!--   스프링컨테이너 생성 : service, repository -->
   <context-param>
 	<param-name>contextConfigLocation</param-name>  
 	<param-value>classpath:kr/or/ddit/config/spring/root-context.xml</param-value>
@@ -32,7 +32,23 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>  
+
+<!-- 캐릭터 인코딩 설정 - 스프링 프레임워크 필터	 -->
+ <filter>
+  <filter-name>encodingFilter</filter-name>
+ 	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	<init-param>
+	 <param-name>encoding</param-name>
+	 <param-value>UTF-8</param-value>
+	</init-param>
+ </filter>
+ 
+ <filter-mapping>
+  <filter-name>encodingFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+	
   
 </web-app>
