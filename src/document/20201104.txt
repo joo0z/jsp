@@ -16,7 +16,7 @@ public class xxxController{
 	}
 }
 
-/mainPath/subPath ==> xxxController.subPath();
+/mainPath/subPath ==> xxxController.subPath(); 
 /mainPath/subPath2 ==> xxxController.subPath2();
 
 @RequestMapping 속성

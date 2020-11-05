@@ -8,4 +8,39 @@
     FROM users 
     WHERE userid = #{userid}
   </select>
+  <select id="selectAllMember" resultType="MemberVo">
+  	 SELECT * 
+     FROM users 
+  </select>
+  <select id="selectMemberPageList" resultType="MemberVo" parameterType="pageVo">
+  	 SELECT *
+		FROM
+		    (select rownum rn, a.*
+		    from
+		        (select *
+		            from users
+		            order by userid) a)
+		WHERE rn BETWEEN (#{page} -1) * #{pageSize} + 1 AND #{page} * #{pageSize}      
+  </select>
+  <select id="selectMemberTotalCnt" resultType="int">
+  		SELECT COUNT(*)
+  		FROM users
+  </select>
+  <insert id="insertMember" parameterType="MemberVo">
+  		INSERT INTO users 
+  		VALUES (#{userid}, #{usernm}, #{pass}, sysdate, #{alias},
+  		  #{addr1}, #{addr2}, #{zipcode}, #{filename,jdbcType=VARCHAR}, #{realfilename,jdbcType=VARCHAR})
+  </insert>
+  <delete id="deleteMember" parameterType="String">
+  		DELETE  
+  		FROM users
+		WHERE userid = #{userid}
+		
+  </delete>
+  <update id="updateMember" parameterType="MemberVo">
+  		UPDATE users SET USERNM = #{usernm}, pass = #{pass}, alias = #{alias}, addr1 = #{addr1}, addr2 = #{addr2},
+  									 zipcode = #{zipcode}, filename = #{filename,jdbcType=VARCHAR}, realfilename = #{realfilename,jdbcType=VARCHAR}
+  		WHERE userid=#{userid}
+  		
+  </update>
 </mapper>
