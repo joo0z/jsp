@@ -17,7 +17,7 @@
 <script>
 $(document).ready(function(){
 	$('#profileDownBtn').on('click', function(){
-		document.location="/member/profileDownload?userid=${memberVo.userid}";
+		document.location="/profileDownloadView?userid=${memberVo.userid}";
 	})
 });
 </script>

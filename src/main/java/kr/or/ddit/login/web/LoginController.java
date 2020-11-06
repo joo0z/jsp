@@ -52,6 +52,29 @@ public class LoginController{
 		return rangers; 
 	}
 	
+	// localhost/login/json
+	// ranger() ==> Model객체에 rangers라는 이름의 속성이 저장 => json()
+	// Model객체에 속성이 존재(rangers)
+	@RequestMapping("json")
+	public String json() {
+		
+		return "jsonView"; // <bean id="jsonView" class"MappingJackson2JsonView">
+			
+				/*
+				 view resolver를 두개 등록
+				 1. beanNameResolver
+				 	viewName에 해당하는 빈이 있는지 찾음
+				 	만약 해당하는 빈(View)이 있으면 해당 view결과를 생성
+				 	beanNameViewResolver에서 찾지 못했을 경우
+				 2. internalResourceViewResolver
+				 	prefix, surfix설정에 따라 
+				 	internalRsourceViewResolver라는 view이름에 해당하는 자원이 존재하는지
+				 	안하는지
+				 */
+			
+	}
+	
+	
 	// localhost/login/view 요청시 처리되는 메서드
 	// 요청 메서드가 GET일 때만 처리
 //	@RequestMapping(path="/view", method= {RequestMethod.GET , RequestMethod.POST}) 
