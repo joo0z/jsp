@@ -62,7 +62,7 @@ function initData(){
 					<div class="form-group">
 						<label for="reg_dt" class="col-sm-2 control-label">사용자사진</label>
 						<div class="col-sm-10">
-							<input type="file" name="realfilename">
+							<input type="file" name="file">
 						</div>
 					</div>
 					<div class="form-group">

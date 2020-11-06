@@ -2,6 +2,7 @@ package kr.or.ddit.member.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -93,8 +94,15 @@ public class MemberController {
 	public String memberRegist(MemberVo memberVo, @RequestPart("file") MultipartFile file) {
 		
 		String realfilename = file.getOriginalFilename();
-		String filename = UUID.randomUUID().toString();
+		String filename = "D:\\upload\\" + realfilename;
 		logger.debug("realfilename : {}", realfilename);
+		
+		File uploadFile = new File("D:\\upload\\" + file.getOriginalFilename());
+		try {
+			file.transferTo(uploadFile);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
 		
 		memberVo.setRealfilename(realfilename);
 		memberVo.setFilename(filename);
@@ -119,8 +127,15 @@ public class MemberController {
 	public String memberUpdate(MemberVo memberVo, @RequestPart("file") MultipartFile file) {
 
 		String realfilename = file.getOriginalFilename();
-		String filename = UUID.randomUUID().toString();
+		String filename = "D:\\upload\\" + realfilename;
 		logger.debug("realfilename : {}", realfilename);
+		
+		File uploadFile = new File("D:\\upload\\" + file.getOriginalFilename());
+		try {
+			file.transferTo(uploadFile);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
 		
 		memberVo.setRealfilename(realfilename);
 		memberVo.setFilename(filename);
