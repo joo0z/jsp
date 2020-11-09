@@ -63,26 +63,26 @@ public class MemberController {
 	}
 	
 	// 파일 다운로드
-//	@RequestMapping("/profileDownload")
-//	public void upload(String userid, HttpServletResponse response) throws Exception {
-//		logger.debug("userid : {}", userid);
-//		
-//		MemberVo memberVo = memberService.getMember(userid);
-//		response.setHeader("Content-Disposition", "attachment; filename=\"" + memberVo.getRealfilename() + "\"");
-//	    response.setContentType("application/octet-stream");
-//		FileInputStream fis = new FileInputStream(memberVo.getFilename());
-//		ServletOutputStream sos = response.getOutputStream();
-//		byte[] buffer = new byte[512];
-//		while ( fis.read(buffer) != -1) {
-//			sos.write(buffer);
-//		}
-//		
-//		fis.close();
-//		// 응답이 가지 않은게 있으면 보내고 닫아라
-//		sos.flush();
-//		sos.close();
-//		
-//	}
+	@RequestMapping("/profileDownload")
+	public void upload(String userid, HttpServletResponse response) throws Exception {
+		logger.debug("userid : {}", userid);
+		
+		MemberVo memberVo = memberService.getMember(userid);
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + memberVo.getRealfilename() + "\"");
+	    response.setContentType("application/octet-stream");
+		FileInputStream fis = new FileInputStream(memberVo.getFilename());
+		ServletOutputStream sos = response.getOutputStream();
+		byte[] buffer = new byte[512];
+		while ( fis.read(buffer) != -1) {
+			sos.write(buffer);
+		}
+		
+		fis.close();
+		// 응답이 가지 않은게 있으면 보내고 닫아라
+		sos.flush();
+		sos.close();
+		
+	}
 	
 	// 회원 등록
 	@RequestMapping("/Regist")
