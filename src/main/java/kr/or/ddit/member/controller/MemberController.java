@@ -51,7 +51,9 @@ public class MemberController {
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("pages", map.get("pages"));
 
-		return "member/memberList";
+//		return "member/memberList";
+//		return "tiles.memberList";
+		return "tiles/member/memberListContent";
 	}
 	
 	@RequestMapping("/member")
@@ -59,7 +61,8 @@ public class MemberController {
 						 Model model) {
 		MemberVo memberVo = memberService.getMember(userid);
 		model.addAttribute("memberVo", memberVo);
-		return "member/member";
+//		return "member/member";
+		return "tiles/member/memberContent";
 	}
 	
 	// 파일 다운로드
@@ -81,13 +84,13 @@ public class MemberController {
 		// 응답이 가지 않은게 있으면 보내고 닫아라
 		sos.flush();
 		sos.close();
-		
 	}
 	
 	// 회원 등록
 	@RequestMapping("/Regist")
 	public String memberRegist() {
-		return "member/memberRegist"; // /WEB-INF/views/multi/view/
+//		return "member/memberRegist"; // /WEB-INF/views/multi/view/
+		return "tiles/member/memberRegistContent";
 	}
 	
 	@RequestMapping("/regist")
@@ -113,14 +116,14 @@ public class MemberController {
 		if (cnt == 1) {
 			return "redirect:/member/memberList";
 		}else {
-			return "member/memberRegist";
+			return "tiles/member/memberRegistContent";
 		}
 	}
 	
 	// 회원 수정
 	@RequestMapping("/updateView")
 	public String memberUpdateView() {
-		return "member/memberupdate"; // /WEB-INF/views/multi/view/
+		return "tiles/member/memberUpdateContent"; // /WEB-INF/views/multi/view/
 	}
 	
 	@RequestMapping("/memberUpdate")

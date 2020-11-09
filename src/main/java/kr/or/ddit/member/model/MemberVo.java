@@ -2,6 +2,9 @@ package kr.or.ddit.member.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "memberVo")
 public class MemberVo {
 	private String userid;
 	private String pass;

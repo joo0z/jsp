@@ -53,9 +53,6 @@ function initData(){
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<%@ include file="/WEB-INF/views/layout/left.jsp" %>
-			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 				<form id="frm" class="form-horizontal" role="form" action="${cp }/member/regist" method="post" enctype="multipart/form-data">

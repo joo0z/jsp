@@ -26,9 +26,6 @@ $(document).ready(function(){
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<%@ include file="/WEB-INF/views/layout/left.jsp" %>
-			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<form class="form-horizontal" role="form" action="${cp }/member/updateView" method="get">
 					<div class="form-group">
