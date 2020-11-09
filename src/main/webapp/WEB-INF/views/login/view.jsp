@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="kr">
   <head>
@@ -89,20 +90,22 @@ $(function(){
   msg : ${msg} <br>
   msg_s : ${msg_s}
   <c:remove var="msg_s" scope="session"/> <br>
-  
   msg_ra : ${msg_ra }<br>
   msg_ra_attr : ${msg_ra_attr }
   
     <div class="container">
       <form class="form-signin" action="${pageContext.request.contextPath }/login/process" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
+        <h2 class="form-signin-heading">
+		<spring:message code="login.signin"></spring:message>
+<!--         Please sign in -->
+        </h2>
+        <label for="inputEmail" class="sr-only"><spring:message code="login.userid"></spring:message></label>
         <input type="email" name="userid" id="inputEmail" class="form-control" placeholder="Email address" value="brown" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="inputPassword" class="sr-only"><spring:message code="login.password"/></label>
         <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" value="brownPass" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="ck" value="remember-me"> Remember me
+            <input type="checkbox" name="ck" value="remember-me"> <spring:message code="login.rememberme"/>
           </label>
         </div>
         <button id="but" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
