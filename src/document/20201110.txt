@@ -1,0 +1,27 @@
+Advice : 공통의 관심 사항 - 횡단 관심사항
+	spring Advice : before
+					after
+					around
+					afterReturning
+					afterThrowing
+	스프링 AOP 에서는 메서드 실행 전 후로만 advice등록이 가능하다.
+
+PointCut : Advice 적용할 메서드를 실별정의
+
+public List<String> 패키지.클래스.getUserPagingList(PageVo pageVo) throws Exception
+
+접근제어자 : 스프링에서는 public 메서드만 허용, 옵션 (생략가능)
+예외 : 생략가능
+	반환값이 뭐든 적용 *
+	경로 뒤에 뭐든 service만 취급 메서드.* 인자(..)
+execution(* kr.or.ddit..service.*.*(..))
+
+kr.or.ddit
+
+
+==> service 패키지에 있는 모든 클래스의 메서드가 실행될 때
+		profiling(시간측정)
+		
+
+
+

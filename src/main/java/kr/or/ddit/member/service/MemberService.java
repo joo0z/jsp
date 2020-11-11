@@ -63,6 +63,18 @@ public class MemberService implements MemberServiceI{
 
 	@Override
 	public int insertMember(MemberVo memberVo) {
+//		logger.debug("첫번째 insert 시작점");
+//		memberDao.insertMember(memberVo);
+//		logger.debug("첫번째 insert 종료후");
+//		
+//		logger.debug("두번째 insert 시작점");
+//		memberDao.insertMember(memberVo);
+//		logger.debug("두번째 insert 종료후");
+//		
+//		return 1;
+//		첫번째 쿼리는 정상적으로 실행되지만 두번째 쿼리에서 동일한 데이터를 입력하여 PROMARY KEY 제약조건에 의해 SQL 실행 실패
+//		첫번째 쿼리는 성동했지만 트랜잭션 설정을 service 레벨에 설정했기 때문에
+//		서비스 메서드에서 실행된 모든 쿼리를 rollback처리해준다.
 		return memberDao.insertMember(memberVo);
 	}
 
