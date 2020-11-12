@@ -3,6 +3,7 @@ package kr.or.ddit.login.web;
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -27,32 +28,40 @@ import kr.or.ddit.WebTestConfig;
 
 // 공통 부분을 WebTestConfig로 빼준 후 extends 
 public class LoginControllerTest extends WebTestConfig{
-	
+
 	@Test
 	public void getViewTest() throws Exception {
-			mockMvc.perform(get("/login/view")).andExpect(status().isOk())
-			.andExpect(view().name("login/view")); // 상태 정상 isOk() ==> 200
+		mockMvc.perform(get("/login/view"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("login/view"));
 	}
 	
-	// 로그인 요청 테스트(정상적인 경우)
+	//로그인 요청 테스트(정상적인 경우)
 	@Test
-	public void prosessSccessTest() throws Exception {
+	public void processSuccessTest() throws Exception {
 		mockMvc.perform(post("/login/process").contentType(MediaType.APPLICATION_FORM_URLENCODED)
-						.param("userid", "brown")
-						.param("pass", "brownPass"))
-						.andExpect(status().is(200))
-						.andExpect(view().name("main"))
-						.andExpect(model().attributeExists("to_day"));
+							.param("userid", "brown")
+							.param("pass", "brownPass"))
+							.andDo(print())
+							.andExpect(status().is(200))
+							.andExpect(view().name("main"))
+							.andExpect(model().attributeExists("to_day"));
 	}
 	
-	// 로그인 요청 테스트(실패)
+	//로그인 요청 테스트(실패)
 	@Test
-	public void prosessFailTest() throws Exception {
-		MvcResult result = mockMvc.perform(post("/login/process").param("userid", "brown")
-											  .param("pass", "brownPassFail")).andReturn();
-		ModelAndView mav = result.getModelAndView();
-		assertEquals("login/view", mav.getViewName());
-		assertEquals("fail", mav.getModel().get("msg"));
+	public void processFailTest() throws Exception {
+		MvcResult result = mockMvc.perform(post("/login/process").contentType(MediaType.APPLICATION_FORM_URLENCODED)
+								.param("userid", "brown")
+								.param("pass", "brownPassFail"))
+								.andDo(print())
+								.andReturn();
 		
+		ModelAndView mav = result.getModelAndView();
+		
+		assertEquals("login/view", mav.getViewName());
+		assertEquals("fail", mav.getModel().get("msg"));		
 	}
+	
+
 }

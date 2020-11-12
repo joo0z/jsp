@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.validation.BindingResult;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
@@ -88,13 +89,17 @@ public class MemberController {
 	
 	// 회원 등록
 	@RequestMapping("/Regist")
-	public String memberRegist() {
+	public String memberViewRegist() {
 //		return "member/memberRegist"; // /WEB-INF/views/multi/view/
 		return "tiles/member/memberRegistContent";
 	}
 	
 	@RequestMapping("/regist")
-	public String memberRegist(MemberVo memberVo, @RequestPart("file") MultipartFile file) {
+	public String memberRegist(MemberVo memberVo, BindingResult br, @RequestPart("file") MultipartFile file) {
+		//검증을 통과하지 못했으므로 사용자 등록 화면으로 이동
+		if(br.hasErrors()) {
+			return "tiles/member/memberRegistContent";
+		}
 		
 		String realfilename = file.getOriginalFilename();
 		String filename = "D:\\upload\\" + realfilename;
@@ -110,14 +115,18 @@ public class MemberController {
 		memberVo.setRealfilename(realfilename);
 		memberVo.setFilename(filename);
 		
-		int cnt = memberService.insertMember(memberVo);
-		logger.debug("insertCnt : {}", cnt);
-		
-		if (cnt == 1) {
-			return "redirect:/member/memberList";
-		}else {
-			return "tiles/member/memberRegistContent";
+		int insertCnt = 0;
+		try {
+			insertCnt = memberService.insertMember(memberVo);
+			//1건이 입력되었을 때 : 정상 - memberList 페이지로 이동
+			if(insertCnt == 1) {
+				return "redirect:/member/list";
+			}
+		}catch(Exception e) {
 		}
+		
+		//return "member/regist";
+		return "tiles/member/memberRegistContent";
 	}
 	
 	// 회원 수정

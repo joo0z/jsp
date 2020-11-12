@@ -26,7 +26,7 @@ public class PropertiyPlaceholderTest {
 		/*** When ***/
 
 		/*** Then ***/ 
-		assertEquals("JYP", dbProperty.getUser());
+		assertEquals("JYP_DEV", dbProperty.getUser());
 		assertEquals("java", dbProperty.getPass());
 	}
 
