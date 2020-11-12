@@ -21,9 +21,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/root-context.xml",
-                           "classpath:kr/or/ddit/config/spring/application-context.xml",
-                           "classpath:kr/or/ddit/config/spring/datasource-context_dev.xml",
-                           "classpath:kr/or/ddit/config/spring/transaction-context.xml"})
+									"classpath:kr/or/ddit/config/spring/application-context.xml",
+									"classpath:kr/or/ddit/config/spring/datasource-context_dev.xml",
+									"classpath:kr/or/ddit/config/spring/transaction-context.xml"})
 @WebAppConfiguration   //  스프링 컨테이너를 웹기반에서 동작하는 컨테이너로 생성하는 옵션(@Controller, @RequestMapping)
 public class WebTestConfig {
    

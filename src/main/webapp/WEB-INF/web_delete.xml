@@ -18,11 +18,6 @@
 				 kr.or.ddit.config.spring.TeansactionContext
 				 kr.or.ddit.config.spring.AopContext
 	</param-value>
-<!-- 	<param-value>classpath:kr/or/ddit/config/spring/root-context.xml
-				 classpath:kr/or/ddit/config/spring/datasource-context.xml
-				 classpath:kr/or/ddit/config/spring/transaction-context.xml
-				 classpath:kr/or/ddit/config/spring/aop-context.xml</param-value>
--->
   </context-param>
   <context-param>
   		<param-name>contextClass</param-name>
@@ -41,8 +36,12 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:kr/or/ddit/config/spring/application-context.xml</param-value>
+			<param-value>kr.or.ddit.config.spring.ApplicationContext</param-value>
 		</init-param>
+		<init-param>
+	  		<param-name>contextClass</param-name>
+	  		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+  		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

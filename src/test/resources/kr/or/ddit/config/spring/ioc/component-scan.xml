@@ -8,7 +8,7 @@
 <!-- 	base-package 속성에 설정된 패키지의 하위 패키지를 포함하여 모든 클래스를 scan
 		스캔된 클래스 중에 @Contraller, @Service, @Repository, @Component 어노테이션
  -->
-	<context:component-scan base-package="kr.or.ddit"></context:component-scan>
+	<context:component-scan base-package="kr.or.ddit.board"></context:component-scan>
 		
 <!-- @Rsource, @Autowired, @Inject : 해당 어노테이션을 작업해주는 스프링 설정 파일
 	 BeanPostProcessor	
