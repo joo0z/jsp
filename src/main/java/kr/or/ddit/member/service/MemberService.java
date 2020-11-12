@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.common.model.PageVo;
@@ -20,6 +21,9 @@ public class MemberService implements MemberServiceI{
 	
 	@Resource(name = "memberDao")
 	private MemberDaoI memberDao;
+	
+	@Resource(name = "sqlSessionTemplate")
+	private SqlSessionTemplate sqlSession;
 	
 	public MemberService() {
 		// 주입해 재사용
@@ -39,25 +43,19 @@ public class MemberService implements MemberServiceI{
 	@Override
 	public Map<String, Object> selectMemberPageList(PageVo pageVo) {
 		
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
-		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memberList", memberDao.selectMemberPageList(sqlSession, pageVo));
-		
+		map.put("memberList", memberDao.selectMemberPageList(pageVo));
 		// 15건, 페이지 사이즈를 7로 가정했을 때 3개의 페이지가 나와야 한다.
-		
-		int cnt = memberDao.selectMemberTotalCnt(sqlSession);
-		int pages = (int) Math.ceil((double)cnt/7);
+		int cnt = memberDao.selectMemberTotalCnt();
+		int pages = (int) Math.ceil((double)cnt/pageVo.getPageSize());
 		map.put("pages", pages);
 		
-		sqlSession.close();
 		return map;
 	}
 	
 	@Override
 	public int selectMemberTotalCnt() {
-		 SqlSession sqlSession = MybatisUtil.getSqlSession();
-	     return memberDao.selectMemberTotalCnt(sqlSession);
+	     return memberDao.selectMemberTotalCnt();
 	}
 
 
@@ -78,17 +76,14 @@ public class MemberService implements MemberServiceI{
 		return memberDao.insertMember(memberVo);
 	}
 
-
 	@Override
 	public int deleteMember(String userid) {
 		return memberDao.deleteMember(userid);
 	}
 
-
 	@Override
 	public int updateMember(MemberVo memberVo) {
 		return memberDao.updateMember(memberVo);
 	}
-
 
 }
